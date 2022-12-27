@@ -178,3 +178,66 @@ List<Map<String, Object>> players = [
 ```dart
 Set<int> numbers = {1, 2, 3, 4};
 ```
+
+## #3.0 Defining a Function
+
+```dart
+String sayHello(String name) {
+    return "Hello $name nice to meett you!"
+}
+
+String sayHello(String name) => "Hello $name nice to meett you!"
+
+void main {
+  sayHello("henry")
+}
+```
+
+## #3.1 Named Parameters
+
+- positional parameter
+
+```dart
+String sayHello(String name, int age, String country) {
+    return "Hello $name, you are $age, and you come from $country";
+  }
+
+sayHello('nico', 19, 'cuba');
+```
+
+- named parameter
+
+1. give default value to parameter
+
+```dart
+String sayHello(
+      {String name = 'henry', int age = 19, String country = 'wakanda'}) {
+    return "Hello $name, you are $age, and you come from $country";
+  }
+
+  print(sayHello());
+```
+
+2. `required` keyword (not-null)
+
+```dart
+String sayHello(
+      {String name = 'henry', required int age, String country = 'wakanda'}) {
+    return "Hello $name, you are $age, and you come from $country";
+  }
+
+  print(sayHello(age: 19));
+```
+
+## #3.3 Optional Positional Parameters
+
+```dart
+String sayHello(
+    String name, int age, [String? country = 'wakanda']) { // [] + default value makes optional positional parameters but is `?` mandatory?
+  return "Hello $name, you are $age, and you come from $country";
+}
+
+void main() {
+  print(sayHello('henry', 1));
+}
+```
