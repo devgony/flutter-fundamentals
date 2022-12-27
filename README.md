@@ -71,3 +71,28 @@ String? name = 'henry';
 name = null;
 name?.isNotEmpty;
 ```
+
+## #1.4 Final Variables
+
+```dart
+final name = 'nico'; // immutable
+name = 'nico';
+```
+
+## #1.5 Late Variables
+
+```dart
+late final String name;
+// do something, go to api
+print(name) // error => null safe! should assign first
+name = 'nico'; // assign late
+```
+
+## #1.6 Constant Variables
+
+- compile time constant
+
+```dart
+const API = '121212';
+const API = fetchApi(); // error => cannot know at compile time
+```
