@@ -96,3 +96,85 @@ name = 'nico'; // assign late
 const API = '121212';
 const API = fetchApi(); // error => cannot know at compile time
 ```
+
+## #2.0 Basic Data Types
+
+```dart
+String name = "henry";
+bool alive = true;
+int age = 12;
+double mouney = 69.99;
+num x = 12;
+x = 1.1; // double extends num
+```
+
+## #2.1 Lists
+
+```dart
+var numbers1 = [1, 2, 3, 4];
+List<int> numbers2 = [1, 2, 3, 4];
+numbers2.add(5);
+```
+
+- collection if
+
+```dart
+var giveMeThree = true;
+var numbers = [
+  1,
+  2,
+  if (giveMeThree) 3,
+];
+```
+
+## #2.2 String Interpolation
+
+```dart
+var name = "henry";
+var age = 10;
+var greeting = 'Hello I\'m $name and ${age + 2} years old';
+```
+
+## #2.3 Collection For
+
+```dart
+var oldFriends = ['nico', 'lynn'];
+var newFriends = [
+  'lewis',
+  'ralph',
+  'darren',
+  for (var friend in oldFriends) "💖 $friend",
+];
+```
+
+## #2.4 Maps
+
+- Object = any
+
+```dart
+Map<String, Object> player = {
+    'name': 'henry',
+    'xp': 19.99,
+    'superpower': false,
+};
+```
+
+```dart
+Map<List<int>, bool> player = {
+    [1, 2]: true,
+    [2]: false,
+};
+```
+
+```dart
+List<Map<String, Object>> players = [
+  {'name': 'henry', 'xp': 199.99},
+  {'name': 'hoon', 'xp': 199.99},
+]
+```
+
+## #2.5 Sets
+
+```dart
+Set<int> numbers = {1, 2, 3, 4};
+```
