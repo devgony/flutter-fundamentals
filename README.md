@@ -241,3 +241,44 @@ void main() {
   print(sayHello('henry', 1));
 }
 ```
+
+## #3.4 QQ Operator
+
+- if left is null, use right
+
+```dart
+left ?? right
+```
+
+```dart
+String capitalizeName(String? name) => name?.toUpperCase() ?? 'a';
+
+print(capitalizeName('henry'));
+print(capitalizeName(null));
+
+String? name;
+name ??= 'one';
+name ??= 'another';
+print(name);
+```
+
+## #3.5 Typedef
+
+```dart
+typedef ListOfInts = List<int>;
+
+void main() {
+  ListOfInts reverseListOfNumbers(ListOfInts list) {
+    var reversed = list.reversed;
+    return reversed.toList();
+  }
+
+  print(reverseListOfNumbers([1, 2, 3]));
+}
+```
+
+- we can do `typedef` with map as well but, better to use Class!
+
+```dart
+typedef UserInfo = Map<String, String>; // => better to convert to Class
+```
