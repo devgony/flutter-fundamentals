@@ -26,3 +26,10 @@ flutter doctor
 ```sh
 flutter create toonflix
 ```
+
+## 2.3 Hello World
+
+### Design Systems
+
+- Material widget (Google, recommanded at first) VS Cupertino widget (IOS)
+- Scaffold: wire frame like CSS grid
