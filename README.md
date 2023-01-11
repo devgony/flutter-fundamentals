@@ -418,3 +418,90 @@ void main() {
     ..sayHello();
 }
 ```
+
+## #4.6 Enums
+
+```dart
+enum Team { red, blue }
+...
+var henry = Player(name: 'henry', xp: 1200, team: Team.red);
+```
+
+## #4.7 Abstract Classes
+
+```dart
+abstract class Human {
+  void walk();
+}
+
+class Player extends Human {
+  String name;
+  int xp;
+  Team team;
+
+  Player({required this.name, required this.xp, required this.team});
+
+  void walk() {
+    print("walk like player");
+  }
+...
+}
+```
+
+## #4.8 Inheritance
+
+```dart
+enum Team { red, blue }
+
+class Human {
+  final String name;
+  Human(this.name);
+  void sayHello() {
+    print("Hi my name is $name");
+  }
+}
+
+class Player extends Human {
+  final Team team;
+  Player({
+    required this.team,
+    required String name,
+  }) : super(name);
+
+  void sayHello() {
+    super.sayHello();
+    print("and i play for $team");
+  }
+}
+
+void main() {
+  var henry = Player(name: 'henry', team: Team.red);
+  henry.sayHello();
+}
+```
+
+1. `constructor(): super(args)` syntax forward argument to super class
+
+   - can use named parameter in super's constructor as well but it can be verbose
+
+2. `super.{method}()` can call super's method
+
+## #4.9 Mixins
+
+- classes without any constructor
+- to reuse static values?
+
+```dart
+class Strong {
+  final double strengthLevel = 1500.99;
+}
+
+class QuickRunner {
+  void runQuick() {
+    print("r----u----n");
+  }
+}
+
+class Player with Strong, QuickRunner {}
+class Horse with Strong, QuickRunner {}
+```
