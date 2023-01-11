@@ -282,3 +282,139 @@ void main() {
 ```dart
 typedef UserInfo = Map<String, String>; // => better to convert to Class
 ```
+
+## #4.0 Your First Dart Class
+
+```dart
+class Player {
+  late final String name;
+  late int xp;
+
+  Player(String name, int xp) {
+    this.name = name;
+    this.xp = xp;
+  }
+
+  void sayHello() {
+    print("Hi my name is $name");
+  }
+}
+
+void main() {
+  var player1 = Player("henry", 1500);
+  print(player1.name);
+//   player.name = 'bla'; // error from final
+
+  var player2 = Player("nico", 2000);
+  player2.sayHello();
+}
+```
+
+## #4.1 Constructors
+
+- syntax sugar of constructor
+
+```dart
+class Player {
+  final String name;
+  int xp;
+
+  Player(this.name, this.xp);
+}
+```
+
+## #4.2 Named Constructor Parameters
+
+```dart
+class Player {
+  final String name;
+  int xp;
+  String team;
+  int age;
+
+  Player({
+    required this.name,
+    required this.xp,
+    required this.team,
+    required this.age,
+  });
+
+  void sayHello() {
+    print("Hi my name is $name");
+  }
+}
+
+void main() {
+  var player1 = Player(
+    name: "henry",
+    xp: 1,
+    team: "red",
+    age: 30
+  );
+  var player2 = Player(
+    name: "nico",
+    xp: 2,
+    team: "orange",
+    age: 31
+  );
+}
+```
+
+## #4.3 Named Constructors
+
+```dart
+Player.createBluePlayer({required String name, required int age})
+      : this.age = age,
+        this.name = name,
+        this.team = 'blue',
+        this.xp = 0;
+
+...
+var player3 = Player.createBluePlayer(name: "test", age: 1);
+```
+
+## #4.4 Recap + fromJson
+
+```dart
+Player.fromJson(Map<String, dynamic> playerJson)
+      : name = playerJson['name'],
+        xp = playerJson['xp'],
+        team = playerJson['team'];
+...
+var apiData = [
+  {"name": "henry", "team": "red", "xp": 0},
+  {"name": "nico", "team": "blue", "xp": 0},
+];
+
+apiData.forEach((playerJson) {
+  var player = Player.fromJson(playerJson);
+  player.sayHello();
+});
+```
+
+## #4.5 Cascade Notation (03:13)
+
+- `..` means the `self` able to use cascade even including method
+
+```dart
+class Player {
+  String name;
+  int xp;
+  String team;
+
+  Player({required this.name, required this.xp, required this.team});
+
+  void sayHello() {
+    print("hello I'm ${this.name}");
+  }
+}
+
+void main() {
+  var henry = Player(name: 'henry', xp: 1200, team: 'red');
+  var updated = henry
+    ..name = 'new_henry'
+    ..xp = 9999
+    ..team = 'blue'
+    ..sayHello();
+}
+```
