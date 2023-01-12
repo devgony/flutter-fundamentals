@@ -75,3 +75,11 @@ Column(
 ```
   "dart.previewFlutterUiGuides": true
 ```
+
+# 3.4 Code Actions
+
+- cmd + `.` -> `Wrap with widget`
+
+# 3.5 Resuable Widgets
+
+- extract Widget by code action
