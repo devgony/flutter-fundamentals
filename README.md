@@ -246,3 +246,30 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
   }
 }
 ```
+
+# 5. Pomodoro APP
+
+## 5.1. User Interface
+
+- expanded widget: expanded horizontally like `w-full`
+
+```dart
+Expanded(
+  child: Container(
+..
+```
+
+- flexible widget: split with flex
+
+```dart
+Flexible(
+  flex: 1,
+  child: Container(
+..
+```
+
+- align bottomCenter: stick to bottom of flex
+
+```dart
+alignment: Alignment.bottomCenter,
+```
