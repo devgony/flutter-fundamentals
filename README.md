@@ -59,3 +59,19 @@ Column(
   ..
 )
 ```
+
+# 3.3. VSCode Settings
+
+- codeActionsOnSave
+
+```
+"editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+```
+
+- previewFlutterUiGuides
+
+```
+  "dart.previewFlutterUiGuides": true
+```
