@@ -8,7 +8,7 @@
 
 # 2. Hello Flutter
 
-## 2.0 Installation
+## 2.0. Installation
 
 - local install
 
@@ -21,15 +21,41 @@ flutter doctor
 
   https://dartpad.dev
 
-## 2.2 Running Flutter
+## 2.2. Running Flutter
 
 ```sh
 flutter create toonflix
 ```
 
-## 2.3 Hello World
+## 2.3. Hello World
 
 ### Design Systems
 
 - Material widget (Google, recommanded at first) VS Cupertino widget (IOS)
 - Scaffold: wire frame like CSS grid
+
+# 3. UI Challenge
+
+## 3.0. Header
+
+- padding
+
+```dart
+Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 40, // == px-40
+          ),
+```
+
+- align
+
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.end, // main of Row: horizontal
+  ..
+)
+Column(
+  crossAxisAlignment: CrossAxisAlignment.end, // cross of Column: horizontal
+  ..
+)
+```
