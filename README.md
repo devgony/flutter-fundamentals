@@ -127,3 +127,29 @@ class CurrencyCard extends StatelessWidget {
   final _blackColor = const Color(0xFF1F2123);
   ..
 ```
+
+# 4. Statefull Widgets
+
+## 4.1 setState
+
+- Stateful Wedget rerender all(?) whenever setState is called
+
+```dart
+int counter = 0;
+
+void onClicked() {
+  setState(() {
+    counter += 1;
+  });
+}
+
+..
+
+IconButton(
+  iconSize: 40,
+  onPressed: onClicked,
+  icon: const Icon(
+    Icons.add_box_rounded,
+  ),
+),
+```
