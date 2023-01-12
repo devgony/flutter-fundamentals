@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static const twentyFiveMinutes = 1500;
   int totalSeconds = twentyFiveMinutes;
   bool isRunning = false;
-  int totalPomodoros = 0;
+  int totalPomodoros = 1;
   late Timer timer;
 
   void onTick(Timer timer) {
@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     setState(() {
       isRunning = true;
+      totalPomodoros = 0;
     });
   }
 
@@ -45,6 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
     timer.cancel();
     setState(() {
       isRunning = false;
+      totalPomodoros = 1;
+    });
+  }
+
+  void onResetPressed() {
+    onPausePressed();
+    setState(() {
+      totalSeconds = twentyFiveMinutes;
+      totalPomodoros = 1;
     });
   }
 
@@ -75,15 +85,27 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Flexible(
             flex: 3,
-            child: Center(
-              child: IconButton(
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                onPressed: isRunning ? onPausePressed : onStartPressed,
-                icon: Icon(isRunning
-                    ? Icons.pause_circle_outline
-                    : Icons.play_circle_outline),
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: IconButton(
+                    iconSize: 120,
+                    color: Theme.of(context).cardColor,
+                    onPressed: isRunning ? onPausePressed : onStartPressed,
+                    icon: Icon(isRunning
+                        ? Icons.pause_circle_outline
+                        : Icons.play_circle_outline),
+                  ),
+                ),
+                Center(
+                    child: IconButton(
+                  iconSize: 120,
+                  color: Theme.of(context).cardColor,
+                  onPressed: onResetPressed,
+                  icon: const Icon(Icons.replay),
+                ))
+              ],
             ),
           ),
           Flexible(
