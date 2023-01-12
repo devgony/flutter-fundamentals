@@ -274,7 +274,7 @@ Flexible(
 alignment: Alignment.bottomCenter,
 ```
 
-## 5.2. Timer
+## 5.1. Timer
 
 - timer class
 
@@ -294,4 +294,26 @@ void onStartPressed() {
     onTick,
   );
 }
+```
+
+## 5.2. Pause Play
+
+- cancel timer
+
+```dart
+void onPausePressed() {
+    timer.cancel();
+    setState(() {
+      isRunning = false;
+    });
+  }
+```
+
+## 5.3. Date Format
+
+```dart
+String format(int seconds) {
+    var duration = Duration(seconds: seconds);
+    return duration.toString().split(".").first.substring(2, 7);
+  }
 ```
