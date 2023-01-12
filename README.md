@@ -76,10 +76,34 @@ Column(
   "dart.previewFlutterUiGuides": true
 ```
 
-# 3.4 Code Actions
+# 3.4. Code Actions
 
 - cmd + `.` -> `Wrap with widget`
 
-# 3.5 Resuable Widgets
+# 3.5. Resuable Widgets
 
 - extract Widget by code action
+
+# 3.7. Icons and Transforms
+
+- clip overflowed edge
+
+```
+clipBehavior: Clip.hardEdge,
+```
+
+- Transform without affecting to other widgets around
+
+```
+Transform.scale(
+  scale: 2.2,
+  child: Transform.translate(
+    offset: const Offset(-5, 12),
+    child: const Icon(
+      Icons.euro_rounded,
+      color: Colors.white,
+      size: 88,
+    ),
+  ),
+)
+```
