@@ -64,7 +64,7 @@ Column(
 
 - codeActionsOnSave
 
-```
+```dart
 "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
@@ -72,7 +72,7 @@ Column(
 
 - previewFlutterUiGuides
 
-```
+```dart
   "dart.previewFlutterUiGuides": true
 ```
 
@@ -88,13 +88,13 @@ Column(
 
 - clip overflowed edge
 
-```
+```dart
 clipBehavior: Clip.hardEdge,
 ```
 
 - Transform without affecting to other widgets around
 
-```
+```dart
 Transform.scale(
   scale: 2.2,
   child: Transform.translate(
@@ -106,4 +106,24 @@ Transform.scale(
     ),
   ),
 )
+```
+
+## 3.8. Reusable Cards
+
+- SingleChildScrollView to prevent horizontal overflow
+
+```dart
+body: SingleChildScrollView(
+```
+
+- define static memeber var staring with `_`
+
+```dart
+class CurrencyCard extends StatelessWidget {
+  final String name, code, amount;
+  final IconData icon;
+  final bool isInverted;
+
+  final _blackColor = const Color(0xFF1F2123);
+  ..
 ```
