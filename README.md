@@ -273,3 +273,25 @@ Flexible(
 ```dart
 alignment: Alignment.bottomCenter,
 ```
+
+## 5.2. Timer
+
+- timer class
+
+```dart
+int totalSeconds = 1500;
+late Timer timer;
+
+void onTick(Timer timer) {
+  setState(() {
+    totalSeconds = totalSeconds - 1;
+  });
+}
+
+void onStartPressed() {
+  timer = Timer.periodic(
+    const Duration(seconds: 1),
+    onTick,
+  );
+}
+```
