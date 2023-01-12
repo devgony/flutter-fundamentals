@@ -210,3 +210,39 @@ color: Theme.of(context).textTheme.titleLarge!.color,
 ```
 
 - exclamation mark means it is not null for sure
+
+## 4.4. Widget lifecycle
+
+- initState
+  - is called once before build
+  - use to subscribe API
+- dispose: is called when any(?) widget is died
+
+```dart
+..
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  void initState() {
+    super.initState();
+    print('initState!');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print('dispose!');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print('build!');
+    return Text(
+      'My Large Title',
+      style: TextStyle(
+        fontSize: 30,
+        color: Theme.of(context).textTheme.titleLarge!.color,
+      ),
+    );
+  }
+}
+```

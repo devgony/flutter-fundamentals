@@ -10,6 +10,14 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool isConverted = true;
+
+  void onPressed() {
+    setState(() {
+      isConverted = !isConverted;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,8 +33,10 @@ class _AppState extends State<App> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              MyLargeTitle(),
+            children: [
+              isConverted ? const MyLargeTitle() : const Text("alternate"),
+              IconButton(
+                  onPressed: onPressed, icon: const Icon(Icons.add_box_rounded))
             ],
           ),
         ),
@@ -35,13 +45,31 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  void initState() {
+    super.initState();
+    print('initState!');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print('dispose!');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('build!');
     return Text(
       'My Large Title',
       style: TextStyle(
