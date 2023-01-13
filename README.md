@@ -393,15 +393,42 @@ class _HomeScreenState extends State<HomeScreen> {
 ## 6.6. FutureBuilder
 
 - FutureBuilder gives context(BuildContext) and snapshot(Future)
+- snapshot.hasData can split loading states
 
 ```dart
 body: FutureBuilder(
-        future: webtoons,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return const Text("There is data!");
-          }
-          return const Text('Loading....');
-        },
-      ),
+  future: webtoons,
+  builder: (context, snapshot) {
+    if (snapshot.hasData) {
+      return const Text("There is data!");
+    }
+    return const Text('Loading....');
+  },
+),
+```
+
+## 6.7. ListView
+
+- ListView gives pagenated infinite scroll
+- itemBuilder take index and load dynamically
+- separatorBuilder sets the gap between items
+- CircularProgressIndicator gives loading bar
+
+```dart
+builder: (context, snapshot) {
+  if (snapshot.hasData) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemCount: snapshot.data!.length,
+      itemBuilder: (context, index) {
+        var webtoon = snapshot.data![index];
+        return Text(webtoon.title);
+      },
+      separatorBuilder: (context, index) => const SizedBox(width: 20),
+    );
+  }
+  return const Center(
+    child: CircularProgressIndicator(),
+  );
+},
 ```
