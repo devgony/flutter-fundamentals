@@ -32,7 +32,7 @@ flutter create toonflix
 ### Design Systems
 
 - Material widget (Google, recommanded at first) VS Cupertino widget (IOS)
-- Scaffold: wire frame like CSS grid
+- Scaffold: wire frame like CSS grid (basic layout)
 
 # 3. UI Challenge
 
@@ -316,4 +316,16 @@ String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().split(".").first.substring(2, 7);
   }
+```
+
+## 6. Webtoon APP
+
+### 6.1. AppBar
+
+- Key warning: Widget has key to identify
+
+```dart
+class App extends StatelessWidget {
+  const App({super.key})
+..
 ```
