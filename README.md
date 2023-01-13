@@ -355,3 +355,37 @@ void getTodaysToons() async {
     throw Error();
   }
 ```
+
+## 6.3. fromJson
+
+- jsonDecode
+
+```dart
+final List<dynamic> webtoons = jsonDecode(response.body);
+```
+
+- named constructor with fromJson
+
+```dart
+WebtoonModel.fromJson(Map<String, dynamic> json)
+    : title = json['title'],
+      thumb = json['thumb'],
+      id = json['id'];
+```
+
+## 6.5. waitForWebToons
+
+- state + manual fetch
+
+```dart
+class _HomeScreenState extends State<HomeScreen> {
+  List<WebtoonModel> webtoons = [];
+  bool isLoading = true;
+
+  void waitForWebToons() async {
+    webtoons = await ApiService.getTodaysToons();
+    isLoading = false;
+    setState(() {});
+  }
+..
+```
