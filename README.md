@@ -389,3 +389,19 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 ..
 ```
+
+## 6.6. FutureBuilder
+
+- FutureBuilder gives context(BuildContext) and snapshot(Future)
+
+```dart
+body: FutureBuilder(
+        future: webtoons,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const Text("There is data!");
+          }
+          return const Text('Loading....');
+        },
+      ),
+```
