@@ -480,7 +480,7 @@ return Column(
 ]
 ```
 
-## 6.8. DetailScreen
+## 6.9. DetailScreen
 
 - GestureDector
 - Navigator.push(route)
@@ -502,4 +502,27 @@ Widget build(BuildContext context) {
           ),
         );
       },
+```
+
+## 6.10 Hero
+
+- Hero widget: If both page uses Hero widget with identical id, they animate like single one
+
+```dart
+// webtoon_widget.dart
+child: Column(
+        children: [
+          Hero(
+            tag: id,
+..
+```
+
+```dart
+// detail_screen.dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Hero(
+      tag: id,
+..
 ```
