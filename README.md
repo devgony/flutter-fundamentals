@@ -318,9 +318,9 @@ String format(int seconds) {
   }
 ```
 
-## 6. Webtoon APP
+# 6. Webtoon APP
 
-### 6.1. AppBar
+## 6.1. AppBar
 
 - Key warning: Widget has key to identify
 
@@ -328,4 +328,30 @@ String format(int seconds) {
 class App extends StatelessWidget {
   const App({super.key})
 ..
+```
+
+## 6.2. Data Fetching
+
+- https://pub.dev/ : like npm
+- pubspec.yaml
+  - like package.json
+  - able to add package by just editing this file
+- by cmd
+
+```
+flutter pub add http
+```
+
+- http method
+
+```dart
+void getTodaysToons() async {
+    final url = Uri.parse('$baseUrl/$today');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      print(response.body);
+      return;
+    }
+    throw Error();
+  }
 ```
