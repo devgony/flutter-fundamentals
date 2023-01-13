@@ -432,3 +432,50 @@ builder: (context, snapshot) {
   );
 },
 ```
+
+## 6.8. Webtoon Card
+
+- Expanded: Columns need to know fixed size => use Expanded to fill to end of screen
+
+```dart
+return Column(
+  children: [
+    const SizedBox(
+      height: 50,
+    ),
+    Expanded(child: makeList(snapshot))
+  ],
+);
+```
+
+- image load + border radius
+
+```dart
+ Container(
+  width: 250,
+  clipBehavior: Clip.hardEdge,
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(15),
+    boxShadow: [
+      BoxShadow(
+        blurRadius: 15,
+        offset: const Offset(10, 10),
+        color: Colors.black.withOpacity(0.3),
+      )
+    ],
+  ),
+  child: Image.network(webtoon.thumb),
+),
+```
+
+- web image setting
+  - set to `html`
+  - default is `canvaskit` which is blocked by some api servers
+  - https://docs.flutter.dev/development/platform-integration/web/renderers
+
+```
+"dart.flutterRunAdditionalArgs": [
+    "--web-renderer",
+    "html"
+]
+```
