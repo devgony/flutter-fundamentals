@@ -479,3 +479,27 @@ return Column(
     "html"
 ]
 ```
+
+## 6.8. DetailScreen
+
+- GestureDector
+- Navigator.push(route)
+- navigate from bottom: `fullscreendialog: true`
+
+```dart
+Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(
+              title: title,
+              thumb: thumb,
+              id: id,
+            ),
+            fullscreenDialog: true,
+          ),
+        );
+      },
+```
