@@ -504,7 +504,7 @@ Widget build(BuildContext context) {
       },
 ```
 
-## 6.10 Hero
+## 6.10. Hero
 
 - Hero widget: If both page uses Hero widget with identical id, they animate like single one
 
@@ -524,5 +524,18 @@ Row(
   children: [
     Hero(
       tag: id,
+..
+```
+
+## 6.13. Futures
+
+- To send id as arguments, it should be `StatefulWidget` and use `widget.{state}`
+
+```dart
+void initState() {
+    super.initState();
+    webtoon = ApiService.getToonById(widget.id);
+    episodes = ApiService.getLatestEpisodesById(widget.id);
+}
 ..
 ```
