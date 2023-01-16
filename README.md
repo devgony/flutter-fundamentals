@@ -577,6 +577,44 @@ FutureBuilder(
 )
 ```
 
-## 6.15. Episodes
+## 6.16. Url Launcher
 
--
+### Install
+
+```sh
+flutter pub add url_launcher
+```
+
+### IOS setting
+
+- add to `ios/Runner/Info.plist`
+- not only url but also sms, tel ...
+
+```
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>https</string>
+</array>
+```
+
+### Android settting
+
+- add to `?/AndroidManifest.xml`
+
+```
+<queries>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="https" />
+  </intent>
+</queries>
+```
+
+### Call launchUrlString
+
+```dart
+onButtonTap() async {
+  await launchUrlString(
+      "https://comic.naver.com/webtoon/detail?titleId=$webtoonId&no=${episode.id}");
+}
+```
