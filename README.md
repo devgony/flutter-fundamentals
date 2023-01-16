@@ -618,3 +618,46 @@ onButtonTap() async {
       "https://comic.naver.com/webtoon/detail?titleId=$webtoonId&no=${episode.id}");
 }
 ```
+
+## 6.17. Favorites
+
+- shared_preferences like localStorage
+
+```
+flutter pub add shared_preferences
+```
+
+```dart
+static const String LIKED_TOONS = 'likedToons';
+late SharedPreferences prefs;
+bool isLiked = false;
+
+Future initPrefs() async {
+  prefs = await SharedPreferences.getInstance();
+  final likedToons = prefs.getStringList(LIKED_TOONS);
+  if (likedToons != null) {
+    if (likedToons.contains(widget.id) == true) {
+      setState(() {
+        isLiked = true;
+      });
+    }
+  } else {
+    await prefs.setStringList(LIKED_TOONS, []);
+  }
+}
+..
+onHeartTap() async {
+    final likedToons = prefs.getStringList(LIKED_TOONS);
+    if (likedToons != null) {
+      if (isLiked) {
+        likedToons.remove(widget.id);
+      } else {
+        likedToons.add(widget.id);
+      }
+      await prefs.setStringList(LIKED_TOONS, likedToons);
+      setState(() {
+        isLiked = !isLiked;
+      });
+    }
+  }
+```
