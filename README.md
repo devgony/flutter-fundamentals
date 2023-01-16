@@ -539,3 +539,44 @@ void initState() {
 }
 ..
 ```
+
+## 6.14. Detail Info
+
+- FutureBuilder + Statefull (from initState)
+
+```dart
+// detail_screen.dart
+FutureBuilder(
+  future: webtoon, // from init State
+  builder: (context, snapshot) {
+    if (snapshot.hasData) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 50,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              snapshot.data!.about,
+              style: const TextStyle(fontSize: 16),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Text(
+              '${snapshot.data!.genre} / ${snapshot.data!.age}',
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      );
+    }
+    return const Text("...");
+  },
+)
+```
+
+## 6.15. Episodes
+
+-
